@@ -7,3 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface BookingRepository extends JpaRepository<Bookingflight, Long> {
 
 }
+
+

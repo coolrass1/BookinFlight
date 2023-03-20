@@ -1,6 +1,7 @@
 package com.skk.Seating_arrangement_system.bookingflight;
 
 import com.skk.Seating_arrangement_system.bookingflight.dto.BookingRequestDTO;
+import com.skk.Seating_arrangement_system.bookingflight.dto.BookingresponseDTO;
 import com.skk.Seating_arrangement_system.exception.EmployeeNotFoundException;
 import com.skk.Seating_arrangement_system.flight.Flight;
 import com.skk.Seating_arrangement_system.flight.FlightService;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/flight")
@@ -23,8 +25,22 @@ public class BookingController {
     SeatFlightService seatFlightService;
 
     @GetMapping("/booking")
-    List <Bookingflight> getaalFlight(){
-        return bookingService.getAllbookings();
+    List <BookingresponseDTO> getaalFlight(){
+        System.out.println(bookingService.getAllbookings());
+
+
+
+       return  bookingService.getAllbookings().stream().map((s->    BookingresponseDTO.builder()
+                .clientaddress(s.getAddress())
+               .Bookingnumber(s.getId().toString())
+               .clientname(s.getUsername())
+               .depart(s.getFlight().getDepart())
+               .flightname(s.getFlight().getFlightnumber())
+               .arrival(s.getFlight().getArrival())
+               .seat(s.getReserved_seat().getSeatnumber())
+                .build())).collect(Collectors.toList());
+
+
 
     }
 

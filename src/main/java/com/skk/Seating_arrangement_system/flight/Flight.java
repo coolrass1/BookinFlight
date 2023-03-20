@@ -1,5 +1,6 @@
 package com.skk.Seating_arrangement_system.flight;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.skk.Seating_arrangement_system.bookingflight.Bookingflight;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,13 +32,16 @@ public class Flight {
 
     private String depart;
     private String arrival;
-    @ToString.Exclude
 
     private Date departime;
-    @ToString.Exclude
+
     private  Date arrivaltime;
     private int seatavailable;
     private boolean isFullyBooked;
+    /*
+    @JsonIgnore
+    @OneToMany(mappedBy ="flightid_id")
+    List<Bookingflight> bookingflights;*/
 
 
 }

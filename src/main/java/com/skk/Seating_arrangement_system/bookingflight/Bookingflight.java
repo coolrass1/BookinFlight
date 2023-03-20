@@ -1,5 +1,6 @@
 package com.skk.Seating_arrangement_system.bookingflight;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.skk.Seating_arrangement_system.flight.Flight;
 import com.skk.Seating_arrangement_system.seatflight.Seatflight;
 import jakarta.persistence.*;
@@ -27,13 +28,8 @@ public class Bookingflight {
             generator = "bookflight_sequence"
     )
     private Long Id ;
-    /*private String flightnumber;
 
-    private String depart;
-    private String arrival;
 
-    private Date departime;
-    private  Date arrivaltime;*/
     @ManyToOne(
             cascade = CascadeType.ALL
     )
@@ -57,10 +53,5 @@ public class Bookingflight {
     private Seatflight reserved_seat;
     private boolean isConfirm;
 
-    public Bookingflight(String username, boolean confirm, Seatflight reservedSeat) {
 
-        this.username=username;
-        this.isConfirm=confirm;
-        this.reserved_seat=reservedSeat;
-    }
 }

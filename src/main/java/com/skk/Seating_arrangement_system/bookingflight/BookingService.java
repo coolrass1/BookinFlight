@@ -12,6 +12,8 @@ public class BookingService {
 
 
     List<Bookingflight> getAllbookings(){
+
+
         return flightRepository.findAll();
     }
 
