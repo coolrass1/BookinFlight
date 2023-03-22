@@ -51,6 +51,7 @@ public class BookingController {
         Flight flightoreserved= flightService.findFlight(bookingRequestDTO.getId());
         if (flightoreserved.getSeatavailable()<1 ) throw  new EmployeeNotFoundException("Flight is fully Booked");
 
+
         //get All seats not booked
         List available_seats = seatFlightService.Allbooked();
 
@@ -74,7 +75,7 @@ public class BookingController {
 
        available_seats.clear();
 flightoreserved.setSeatavailable(flightoreserved.getSeatavailable()-1);
- flightService.createFlight(flightoreserved);
+ flightService.crateFlightForBooking(flightoreserved);
 
         return bookingService.createBooking(bookingflight);
     }

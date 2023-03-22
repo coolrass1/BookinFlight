@@ -1,5 +1,6 @@
 package com.skk.Seating_arrangement_system.flight;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +18,18 @@ public class FlightController {
 
     }
 
-    @PostMapping("/create")
+    /*@PostMapping("/create")
     Flight createFlight(@RequestBody Flight  flight){
-        System.out.println(flight.getDepart());
+
 
         return flightService.createFlight(flight);
+    }*/
+
+    @PostMapping("/create")
+    Flight createFlight(@RequestBody @Valid FlightrequestDTO flightrequestDTO){
+
+
+        return flightService.createFlight(flightrequestDTO);
     }
 
 }

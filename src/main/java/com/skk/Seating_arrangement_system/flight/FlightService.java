@@ -17,8 +17,20 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
-    public Flight createFlight(Flight flight) {
+    public Flight createFlight(FlightrequestDTO flightrequestDTO) {
+        var flight= Flight.builder()
+                .arrivaltime(flightrequestDTO.getArrivaltime())
+                .departime(flightrequestDTO.getDepartime())
+                .isFullyBooked(flightrequestDTO.isFullyBooked())
+                .flightnumber(flightrequestDTO.getFlightnumber())
+                .seatavailable(flightrequestDTO.getSeatavailable())
+                .depart(flightrequestDTO.getDepart())
+                .arrival(flightrequestDTO.getArrival())
+                .build();
         System.out.println(flight);
+        return flightRepository.save(flight);
+    }
+    public Flight crateFlightForBooking(Flight flight){
         return flightRepository.save(flight);
     }
 

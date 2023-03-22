@@ -1,8 +1,10 @@
 package com.skk.Seating_arrangement_system.flight;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.skk.Seating_arrangement_system.bookingflight.Bookingflight;
+
 import jakarta.persistence.*;
+
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.Date;
@@ -29,6 +31,8 @@ public class Flight {
     )
     private Long Id ;
     private String flightnumber;
+
+    @NotBlank(message = "Depart name cannot be blank")
 
     private String depart;
     private String arrival;
